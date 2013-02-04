@@ -20,6 +20,7 @@ $.fn.S3Uploader = (options) ->
     before_add: null
     remove_completed_progress_bar: true
     remove_failed_progress_bar: false
+    progress_bar_container_id: this.attr('id')
 
   $.extend settings, options
 
@@ -33,7 +34,7 @@ $.fn.S3Uploader = (options) ->
         file = data.files[0]
         unless settings.before_add and not settings.before_add(file)
           data.context = $(tmpl("template-upload", file)) if $('#template-upload').length > 0
-          $uploadForm.append(data.context)
+          $('#'+progress_bar_container_id).append(data.context)
           data.submit()
 
       start: (e) ->
