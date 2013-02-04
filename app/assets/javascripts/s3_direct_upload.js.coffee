@@ -34,7 +34,6 @@ $.fn.S3Uploader = (options) ->
         file = data.files[0]
         unless settings.before_add and not settings.before_add(file)
           data.context = $(tmpl("template-upload", file)) if $('#template-upload').length > 0
-          alert('#'+settings.progress_bar_container_id)
           $('#'+settings.progress_bar_container_id).append(data.context)
           data.submit()
 
